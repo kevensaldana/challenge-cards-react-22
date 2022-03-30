@@ -1,45 +1,31 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { useEffect } from "react";
+import { useUser } from "./contexts/shared/hooks/useUser";
+import { Http } from "./contexts/shared/infra";
+import CardsView from "./contexts/cards/CardsView";
+import tokenInterceptor from "./contexts/shared/infra/TokenInterceptor";
+import { CardsProvider } from "./contexts/cards/CardsContext";
+import { AuthProvider } from "./contexts/shared/contexts";
+
+Http.addRequestInterceptors([tokenInterceptor()]);
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { user, loadUser } = useUser();
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
+  useEffect(() => {
+    if (!user?.token) {
+      loadUser();
+    }
+  }, []);
+
+  return user?.token ? (
+    <AuthProvider>
+      <CardsProvider>
+        <CardsView />
+      </CardsProvider>
+    </AuthProvider>
+  ) : (
+    <span>Loading...</span>
+  );
 }
 
-export default App
+export default App;
