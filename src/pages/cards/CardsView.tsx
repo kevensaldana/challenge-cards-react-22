@@ -1,7 +1,7 @@
-import { Button } from "../shared/components";
+import { Button } from "../../components";
 import { useCardsContext } from "./CardsContext";
+import { ModalCardForm } from "./components";
 import CardCollection from "./components/Collection";
-import ModalCardForm from "./components/Form/ModalCardForm";
 import { Mode } from "./definitions";
 import { SCContainer, SCHeader, SCTitle } from "./styles";
 import { useCards } from "./useCards";

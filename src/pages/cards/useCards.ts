@@ -1,7 +1,6 @@
 import { useMutation, useQuery } from "react-query";
 import { useCardsContext } from "./CardsContext";
-import Card from "./domain/Card";
-import CardRepository from "./domain/CardRepository";
+import { CardRepository, Card } from "./domain";
 
 export const useCards = () => {
   const { setCards } = useCardsContext();

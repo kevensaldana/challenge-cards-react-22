@@ -7,7 +7,7 @@ import {
   TextArea,
   TextField,
   Upload,
-} from "../../../shared/components";
+} from "../../../../components";
 import { useCardsContext } from "../../CardsContext";
 import { Mode } from "../../definitions";
 import { useFindCard } from "../../useCards";

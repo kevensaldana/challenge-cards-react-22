@@ -1,5 +1,8 @@
-import { Button } from "../../../shared/components";
+import { SyntheticEvent } from "react";
+import { Button } from "../../../../components";
 import { useCardsContext } from "../../CardsContext";
+import { Mode } from "../../definitions";
+import { useDeleteCard } from "../../useCards";
 import {
   SCCard,
   SCTitle,
@@ -8,10 +11,6 @@ import {
   SCFooter,
   SCContent,
 } from "./styles";
-import imageDefaultUrl from "./defaultCard.jpeg";
-import { useDeleteCard } from "../../useCards";
-import { Mode } from "../../definitions";
-import { SyntheticEvent } from "react";
 
 export interface CardProps {
   id: string;
@@ -20,12 +19,7 @@ export interface CardProps {
   image?: string;
 }
 
-const Card = ({
-  id,
-  title,
-  description,
-  image = imageDefaultUrl,
-}: CardProps) => {
+const Card = ({ id, title, description, image = "" }: CardProps) => {
   const { setModalForm } = useCardsContext();
   const { deleteCard } = useDeleteCard();
 
@@ -35,7 +29,7 @@ const Card = ({
         src={image}
         alt={title}
         onError={(e: SyntheticEvent<HTMLImageElement>) => {
-          e.currentTarget.src = imageDefaultUrl;
+          e.currentTarget.src = "";
         }}
       />
       <SCContent>

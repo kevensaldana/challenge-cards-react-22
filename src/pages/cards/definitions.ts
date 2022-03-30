@@ -1,5 +1,5 @@
 import { Dispatch } from "react";
-import Card from "./domain/Card";
+import { Card } from "./domain";
 
 export enum Mode {
   NEW,

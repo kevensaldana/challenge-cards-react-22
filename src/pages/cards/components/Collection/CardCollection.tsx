@@ -5,7 +5,6 @@ interface CardCollectionProps {
   cards: CardProps[];
 }
 
-// ok
 const CardCollection = ({ cards }: CardCollectionProps) => {
   return (
     <SCContainer>

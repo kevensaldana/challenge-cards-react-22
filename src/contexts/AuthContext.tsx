@@ -6,7 +6,7 @@ import {
   useContext,
   useState,
 } from "react";
-import User from "../domain/User";
+import { User } from "../domain";
 
 const useAuthContext = () => {
   const context = useContext(AuthContext);

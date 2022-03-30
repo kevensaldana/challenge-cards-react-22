@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { UploadFile } from "../../../shared/components";
+import { UploadFile } from "../../../../components";
 import { FormState, initialFormState } from "./definitions";
 
 export function useFormChange() {

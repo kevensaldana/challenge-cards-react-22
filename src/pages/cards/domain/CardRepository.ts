@@ -1,4 +1,4 @@
-import Http from "../../shared/infra/Http";
+import { Http } from "../../../http";
 import Card from "./Card";
 import { CardResponse } from "./definitions";
 

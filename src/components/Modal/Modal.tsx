@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useLayoutEffect } from "react";
+import { ReactNode } from "react";
 import ReactDOM from "react-dom";
 import Button from "../Button";
 import {

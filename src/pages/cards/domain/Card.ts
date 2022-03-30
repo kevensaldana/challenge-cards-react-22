@@ -1,5 +1,5 @@
+import { CardProps } from "../components";
 import { FormState } from "../components/Form/definitions";
-import { CardProps } from "../components/Item";
 
 export default class Card {
   constructor(

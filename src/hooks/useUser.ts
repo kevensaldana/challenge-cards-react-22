@@ -1,13 +1,12 @@
 import { useQuery } from "react-query";
-import User from "../domain/User";
-import AuthRepository from "../domain/UserRepository";
+import { User, UserRepository } from "../domain";
 
 export const useUser = () => {
   const {
     data,
     isLoading,
     refetch: loadUser,
-  } = useQuery("user", AuthRepository.findToken, {
+  } = useQuery("user", UserRepository.findToken, {
     enabled: false,
     onSuccess: (user: User) => {
       localStorage.setItem("token", user.token);
@@ -18,8 +17,7 @@ export const useUser = () => {
         return new User(token);
       }
       return null;
-    }
-
+    },
   });
 
   return {

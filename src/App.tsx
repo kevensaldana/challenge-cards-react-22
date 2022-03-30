@@ -1,10 +1,9 @@
 import { useEffect } from "react";
-import { useUser } from "./contexts/shared/hooks/useUser";
-import { Http } from "./contexts/shared/infra";
-import CardsView from "./contexts/cards/CardsView";
-import tokenInterceptor from "./contexts/shared/infra/TokenInterceptor";
-import { CardsProvider } from "./contexts/cards/CardsContext";
-import { AuthProvider } from "./contexts/shared/contexts";
+import { AuthProvider } from "./contexts";
+import { useUser } from "./hooks";
+import { Http, tokenInterceptor } from "./http";
+import { CardsView } from "./pages/cards";
+import { CardsProvider } from "./pages/cards/CardsContext";
 
 Http.addRequestInterceptors([tokenInterceptor()]);
 
