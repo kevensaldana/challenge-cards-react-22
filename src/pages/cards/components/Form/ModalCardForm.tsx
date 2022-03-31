@@ -46,7 +46,7 @@ const ModalCardForm = () => {
       onClose={() => initModalFormContext!()}
       title={`${modeText} Card`}
       footer={
-        <Button type="submit" form="card-form" color="primary">
+        <Button type="submit" form="card-form" color="primary" aria-label={modeText}>
           {modeText}
         </Button>
       }

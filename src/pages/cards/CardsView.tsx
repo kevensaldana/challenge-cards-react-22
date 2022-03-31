@@ -21,6 +21,7 @@ const CardsView = () => {
         <SCHeader>
           <SCTitle>Cards App</SCTitle>
           <Button
+            aria-label="Add"
             onClick={() => {
               setModalForm!({ isOpen: true, mode: Mode.NEW });
             }}

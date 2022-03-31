@@ -3,6 +3,7 @@ import { Button } from "../../../../components";
 import { useCardsContext } from "../../CardsContext";
 import { Mode } from "../../definitions";
 import { useDeleteCard } from "../../useCards";
+import defaultCard from './defaultCard.jpeg'
 import {
   SCCard,
   SCTitle,
@@ -19,27 +20,32 @@ export interface CardProps {
   image?: string;
 }
 
-const Card = ({ id, title, description, image = "" }: CardProps) => {
+const Card = ({ id, title, description, image = defaultCard }: CardProps) => {
   const { setModalForm } = useCardsContext();
   const { deleteCard } = useDeleteCard();
 
   return (
-    <SCCard>
+    <SCCard role="article">
       <SCImage
         src={image}
         alt={title}
         onError={(e: SyntheticEvent<HTMLImageElement>) => {
-          e.currentTarget.src = "";
+          e.currentTarget.src = defaultCard;
         }}
       />
       <SCContent>
         <SCTitle>{title}</SCTitle>
         <SCBody>{description}</SCBody>
         <SCFooter>
-          <Button color="danger" onClick={() => deleteCard({ id })}>
+          <Button
+            aria-label="delete"
+            color="danger"
+            onClick={() => deleteCard({ id })}
+          >
             Delete
           </Button>
           <Button
+            aria-label="edit"
             onClick={() => setModalForm!({ isOpen: true, mode: Mode.EDIT, id })}
           >
             Edit

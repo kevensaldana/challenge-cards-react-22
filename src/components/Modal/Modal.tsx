@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import ReactDOM from "react-dom";
+import { createPortal } from "react-dom";
 import Button from "../Button";
 import {
   SCBody,
@@ -18,18 +18,18 @@ interface ModalProps {
 }
 
 const Modal = ({ title, children, footer, onClose }: ModalProps) => {
-  return ReactDOM.createPortal(
-    <SCOverlay>
+  return createPortal(
+    <SCOverlay role="dialog">
       <SCContent onClick={(e) => e.stopPropagation()}>
         <SCHeader>
           <SCTitle>{title}</SCTitle>
-          <Button onClick={onClose}>X</Button>
+          <Button aria-label="Close Modal" onClick={onClose}>X</Button>
         </SCHeader>
         <SCBody>{children}</SCBody>
         <SCFooter>{footer}</SCFooter>
       </SCContent>
     </SCOverlay>,
-    document.getElementById("root")!
+    document.querySelector("body")!
   );
 };
 

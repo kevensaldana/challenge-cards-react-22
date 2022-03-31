@@ -1,8 +1,9 @@
+import { ButtonHTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 
 type colors = "primary" | "danger";
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   block?: boolean;
   color?: colors;
 }
