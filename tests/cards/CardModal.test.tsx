@@ -27,6 +27,10 @@ describe("Card Modal", () => {
       const wrapper = createWrapper();
       CardsViewPageObject.clickCardAddButton(wrapper);
 
+      await waitFor(() => {
+        expect(CardsViewPageObject.getModal(wrapper)).toBeInTheDocument();
+      });
+
       CardModalPageObject.editInputTitle(wrapper, cardRandom.title);
       CardModalPageObject.editInputDescription(wrapper, cardRandom.description);
 

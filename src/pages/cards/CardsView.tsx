@@ -1,10 +1,16 @@
+import { lazy, Suspense } from "react";
 import { Button } from "../../components";
 import { useCardsContext } from "./CardsContext";
-import { ModalCardForm } from "./components";
 import CardCollection from "./components/Collection";
 import { Mode } from "./definitions";
 import { SCContainer, SCHeader, SCTitle } from "./styles";
 import { useCards } from "./useCards";
+
+const ModalCardForm = lazy(() =>
+  import("./components").then((module) => ({
+    default: module.ModalCardForm,
+  }))
+);
 
 const CardsView = () => {
   const {
@@ -36,7 +42,11 @@ const CardsView = () => {
           <p>No cards yet</p>
         )}
       </SCContainer>
-      {modalForm.isOpen && <ModalCardForm />}
+      {modalForm.isOpen && (
+        <Suspense fallback={null}>
+          <ModalCardForm />
+        </Suspense>
+      )}
     </>
   );
 };
