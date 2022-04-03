@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from "react";
+import styled from "styled-components";
 
 export interface UploadFile {
   file: File | null;
@@ -11,10 +12,14 @@ interface UploadProps {
   id?: string;
 }
 
+const SCInput = styled.input`
+  width: 100%;
+`;
+
 const Upload = React.forwardRef<HTMLInputElement, UploadProps>(
   ({ onChange, name, id }, ref) => {
     return (
-      <input
+      <SCInput
         id={id}
         type="file"
         name={name}
