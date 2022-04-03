@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { Button } from "../../components";
 import { useCardsContext } from "./CardsContext";
 import CardCollection from "./components/Collection";
+import { FiltersCards } from "./components/Filters";
 import { Mode } from "./definitions";
 import { SCContainer, SCHeader, SCTitle } from "./styles";
 import { useCards } from "./useCards";
@@ -37,7 +38,10 @@ const CardsView = () => {
         </SCHeader>
 
         {cardList.length > 0 ? (
-          <CardCollection cards={cardList.map((card) => card.toCardItem())} />
+          <>
+            <FiltersCards />
+            <CardCollection cards={cardList.map((card) => card.toCardItem())} />
+          </>
         ) : (
           <p>No cards yet</p>
         )}

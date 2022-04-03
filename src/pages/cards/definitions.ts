@@ -1,5 +1,5 @@
 import { Dispatch } from "react";
-import { Card } from "./domain";
+import { Card, CardFilterName } from "./domain";
 
 export enum Mode {
   NEW,
@@ -16,20 +16,18 @@ export interface CardsContextProps {
   setModalForm?: Dispatch<
     Partial<{
       isOpen: boolean;
-      loading: boolean;
-      error: string | null;
       id: string | null;
       mode?: Mode | undefined;
     }>
   >;
   cards: {
     list: Card[];
+    filter: CardFilterName;
   };
   setCards?: Dispatch<
     Partial<{
       list: Card[];
-      loading: boolean;
-      error: string | null;
+      filter: CardFilterName;
     }>
   >;
 }
@@ -42,5 +40,6 @@ export const initCardsContext: CardsContextProps = {
   },
   cards: {
     list: [],
+    filter: CardFilterName.CREATED_NEWEST,
   },
 };

@@ -1,13 +1,17 @@
 import { useMutation, useQuery } from "react-query";
 import { useCardsContext } from "./CardsContext";
-import { CardRepository, Card } from "./domain";
+import { CardRepository, Card, cardsFilters } from "./domain";
 
 export const useCards = () => {
-  const { setCards } = useCardsContext();
+  const {
+    setCards,
+    cards: { filter },
+  } = useCardsContext();
   const { refetch } = useQuery("cards", CardRepository.findAll, {
     onSuccess: (cards: Card[]) => {
+      const orderedCards = cardsFilters[filter].meetCriteria(cards);
       setCards!({
-        list: cards,
+        list: orderedCards,
       });
     },
   });
