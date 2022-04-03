@@ -39,6 +39,8 @@ export const SCBody = styled.div`
   padding: 1rem;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
+  max-height: 50vh;
+  overflow-y: auto;
 `;
 
 export const SCFooter = styled.div`
